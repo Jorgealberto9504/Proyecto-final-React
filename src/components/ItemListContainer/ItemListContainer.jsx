@@ -1,10 +1,23 @@
 /* eslint-disable react/prop-types */
 import styles from './ItemListContainer.module.css'
-import ltd from '../../assets/ltd.jpg'
+import { useEffect, useState } from 'react'
+import { getProducts } from '../../utils/MockData'
+import { ItemList } from '../ItemList/ItemList'
 
 export const ItemListContainer = ({greeting } ) => {//En esta parte tambien desestructuramos las props
-    
+   const[guitarras, setGuitarras] = useState([])
 
+useEffect(()=>{
+  
+getProducts().then((res)=>{
+  /* console.log(res); */
+  setGuitarras(res)})
+  
+  .catch((error) => {
+    console.log(error);
+  })
+
+}, [])
    /*  const { bgBlue, greeting } = props  */ //esto e sdescomposicion para hacer mas sencillo de leer los props en el elemento
     //De igual forma podemos declararlos en los parentesis de arribas
     const defaultTitle = "Default title"
@@ -16,6 +29,7 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
 
        <div className={ styles.container }>
          <h2>Guitarras Electricas</h2>
+         {/* 
 </div>
 
 <div className={styles.guitarras}>
@@ -63,10 +77,12 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
           <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
           <a href="#" className="btn btn-primary">Go somewhere</a>
         </div>
-      </div>
+      </div> */}
+    {/*   {console.log(guitarras)} */}
 
+      
       </div>
-
+      <ItemList guitarrasList={guitarras}/>
 </main>
   )
 }
