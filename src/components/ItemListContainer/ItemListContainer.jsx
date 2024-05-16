@@ -1,35 +1,72 @@
 /* eslint-disable react/prop-types */
-import styles from "./ItemListContainer.module.css"
+import styles from './ItemListContainer.module.css'
+import ltd from '../../assets/ltd.jpg'
 
-export const ItemListContainer = ({bgBlue, greeting}) => {  /* aca estamos usando props, con solo agregarle entre los parentesis la palabra props */
-    const defaultTitle = "Welcome to the app";
+export const ItemListContainer = ({greeting } ) => {//En esta parte tambien desestructuramos las props
+    
 
-
-
-/* Desestructuracion se hace de la siguiente forma y significa crear mas de 2 variables en una sola linea tomando su
-contenido de otro lado en este caso de props 
-
-De igual forma podemos desestructurar nuestros props directamente en el parentesis de la parte de arriba o se en la zona que estamos declarando nuestra funcion
-*/
-
-/* const { bgBlue, greeting} = props */
-
-
-
-
+   /*  const { bgBlue, greeting } = props  */ //esto e sdescomposicion para hacer mas sencillo de leer los props en el elemento
+    //De igual forma podemos declararlos en los parentesis de arribas
+    const defaultTitle = "Default title"
+    
+   
   return (
-<>
+    <main>
+     <h1 className={styles.titulo}>{ greeting ? greeting : defaultTitle }</h1> 
 
+       <div className={ styles.container }>
+         <h2>Guitarras Electricas</h2>
+</div>
 
-<h1 className={styles.hola}>{greeting ? greeting : defaultTitle}</h1>{" "}
-      {/* aqui podemos ver como estamos utilizando una clase para que usemos nuestro archivo css por medio de styles */}
+<div className={styles.guitarras}>
 
-      {/* Dentro de estas llaves con loas cuales podemos usar javascript dentro de html no podemos usar cualquier tipo de codigo, por ejemplo para usar un if debemos usarlos forsozamente con operadores ternarios como se muestra en esta linea*/}
-<h2 className={bgBlue ? styles.background : styles.backgroundGreen}>This is a text</h2>  {/* aqui podemos ver como estamos utilizando una clase para que usemos nuestro archivo css por medio de styles */}
+<div className="card" style={{ width: '18rem' }}>
+        <img src={ltd} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">LTD EC-401</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <a href="#" className="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 
+      <div className="card" style={{ width: '18rem' }}>
+        <img src={ltd} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">LTD EC-401</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <a href="#" className="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 
-</>
+      <div className="card" style={{ width: '18rem' }}>
+        <img src={ltd} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">LTD EC-401</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <a href="#" className="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 
+      <div className="card" style={{ width: '18rem' }}>
+        <img src={ltd} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">LTD EC-401</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <a href="#" className="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 
- )
+      <div className="card" style={{ width: '18rem' }}>
+        <img src={ltd} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">LTD EC-401</h5>
+          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the content.</p>
+          <a href="#" className="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      </div>
+
+</main>
+  )
 }
