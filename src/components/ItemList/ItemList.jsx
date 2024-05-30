@@ -2,13 +2,12 @@
 import {Item} from '../Item/Item'
 import styles from './ItemList.module.css'
 
-export const ItemList = ({guitarrasList}) => {
-    console.log(guitarrasList)
+export const ItemList = ({productsList}) => {
   return (
     <div className={styles.itemlist}>
-        {guitarrasList.map((elem)=>{
-        return <Item key={elem.cantidad} {...elem} />
+        {productsList?.map((elem)=>{
+        return <Item key={elem.id} {...elem} />;
 })}
     </div>
-  )
-}
+  );
+};

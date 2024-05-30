@@ -1,34 +1,79 @@
 /* eslint-disable react/prop-types */
 import styles from './ItemListContainer.module.css'
-import { useEffect, useState } from 'react'
-import { getProducts } from '../../utils/MockData'
+import { useState, useEffect } from 'react'
+import { getProducts, getProductsByCategory } from '../../utils/MockData'
 import { ItemList } from '../ItemList/ItemList'
+import { useParams } from 'react-router-dom'
+/* import { useFetch } from '../../hooks/useFetch'
+ */
 
 export const ItemListContainer = ({greeting } ) => {//En esta parte tambien desestructuramos las props
-   const[guitarras, setGuitarras] = useState([])
+  const defaultTitle = "Default title"
+   const [products, setProducts] = useState([]);
+   const [loading, setLoading]= useState(true);
+   
 
-useEffect(()=>{
-  
-getProducts().then((res)=>{
-  /* console.log(res); */
-  setGuitarras(res)})
+   const {catId} = useParams();
+   console.log(catId);
+ 
+/*    const url = "https://fakestoreapi.com/products";
+   const method = "GET"; */
+/*    const { data, loading, error } = useFetch(url, method, null); */
+
+   //Con esto cargamos nuestros productos y no los de la API, comprobar con el archivo de REACT3
+ useEffect(()=>{
+  setLoading(true)
+
+  if(catId){
+    getProductsByCategory(catId).then((res) => {
+      setProducts(res);
+      setLoading(false);
+    });
+  }else{
+    getProducts()
+.then((res)=>{
+ setProducts(res);
+  setLoading(false);
+})
   
   .catch((error) => {
     console.log(error);
-  })
+  });
+  }
 
-}, [])
-   /*  const { bgBlue, greeting } = props  */ //esto e sdescomposicion para hacer mas sencillo de leer los props en el elemento
+
+  /* if (catId){
+    const filterdProducts = products.filter((elem)=> elem.type === catId)
+    setProducts(filterdProducts)
+  } */
+  //setProduct().then((res) => console.log(res));
+}, [catId]);
+   /*  const { bgBlue, greeting } = props */   //esto e sdescomposicion para hacer mas sencillo de leer los props en el elemento
     //De igual forma podemos declararlos en los parentesis de arribas
-    const defaultTitle = "Default title"
     
+ 
    
   return (
     <main>
      <h1 className={styles.titulo}>{ greeting ? greeting : defaultTitle }</h1> 
+      {loading === true ? (
+      <p>Loading...</p> ): (
 
-       <div className={ styles.container }>
-         <h2>Guitarras Electricas</h2>
+      <>
+      <div className={ styles.container }>
+      <h2>Guitarras Electricas</h2>
+
+      </div>
+   <ItemList productsList={products}/>
+   </>
+      )}
+       
+</main>
+  )
+}
+
+
+         
          {/* 
 </div>
 
@@ -81,8 +126,4 @@ getProducts().then((res)=>{
     {/*   {console.log(guitarras)} */}
 
       
-      </div>
-      <ItemList guitarrasList={guitarras}/>
-</main>
-  )
-}
+  

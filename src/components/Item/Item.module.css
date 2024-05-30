@@ -14,3 +14,9 @@
 img{
 width: 100px;
 }
+button{
+    border-radius: 6px;
+    background-color: gray;
+    color: white;
+    border: 1px solid black;
+}
