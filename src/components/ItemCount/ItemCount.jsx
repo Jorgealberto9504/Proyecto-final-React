@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export const ItemCount = () => {
+export const ItemCount = ({stock}) => {
 
     
     const [cantItems, setCantItems] = useState(0)
@@ -21,25 +21,28 @@ export const ItemCount = () => {
 /*     console.log('se estan declarando las funciones');
  */    const handlleAdd = () => {
         setCantItems(cantItems + 1)
-        console.log('click +' , cantItems);
     }
     const handlleSubs = () => {
         if(cantItems > 0){
         setCantItems(cantItems - 1)
-        console.log('click -' , cantItems);
         }
     }
+
+const handlleAddToCart = () => {
+  console.log(`Se agregaron ${cantItems} elementos al carrito`);
+}
 
 
   return (
     
     <>
-    {console.log('se esta renderizando el componente')}
     <div>ItemCount</div>
+    <div>
     <button onClick={handlleSubs}> - </button>
     <span>{cantItems}</span>
     <button onClick={handlleAdd}> + </button>
-    
+    </div>
+    <button onClick={handlleAddToCart}>Agregar al carrito</button>
     </>
   )
 }
