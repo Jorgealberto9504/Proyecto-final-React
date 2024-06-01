@@ -17,7 +17,9 @@ export const Item = ({id, name, image }) => {
       <Card.Img variant="top" src={image}/>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Link to={`/products/${id}`} onClick={handleOnClick}>Detalles</Link>
+        <Link to={`/product/${id}`} onClick={handleOnClick}>
+          Detalles
+          </Link>
       </Card.Body>
     </Card>
       );

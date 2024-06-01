@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom'
  */
 
 export const ItemListContainer = ({greeting } ) => {//En esta parte tambien desestructuramos las props
-  const defaultTitle = "Default title"
+  const defaultTitle = " Villara Shop "
    const [products, setProducts] = useState([]);
    const [loading, setLoading]= useState(true);
    
@@ -61,7 +61,7 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
 
       <>
       <div className={ styles.container }>
-      <h2>Guitarras Electricas</h2>
+      <h2>Guitarras</h2>
 
       </div>
    <ItemList productsList={products}/>

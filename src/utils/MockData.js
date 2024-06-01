@@ -6,7 +6,7 @@ export const products = [
     price: 12000,
     category: "electricas",
     stock: 3,
-    image: "https://gamamusic.com/cdn/shop/files/LEC401BLK-5.jpg?v=1696010313&width=1000"
+    image: "https://tiendamusicland.com/wp-content/uploads/2023/10/ESP-LTD-EC-401-Electric-Guitar-2.jpg"
 },
 
 {
@@ -16,7 +16,7 @@ export const products = [
     price: 20000,
     category: "electricas",
     stock: 2,
-    image: 'https://eusica.mx/content/files/EYC/Im%C3%A1genes%20de%20producto/Gibson%20SG%20Standard%20%2761/Gibson%20SG%20Standard%20%2761%20Maestro%20Vibrola.png'
+    image: 'https://www.mrcdinstrumentos.com.mx/shared/productos/21335/SGS00HCCH1-01.jpg'
 },
 
 {
@@ -36,8 +36,7 @@ export const products = [
     price: 32000,
     category:"electricas",
     stock: 6,
-    image: "https://cdn.connectsites.net/user_files/esp/product_images/000/027/784/original.png?1610245115"
-},
+    image: 'https://tiendamusicland.com/wp-content/uploads/2023/10/ESP-LTD-EC-1000-Fluence-Electric-Guitar-Andromeda-3.jpg'},
 
 {
     id: 5,
@@ -55,8 +54,7 @@ export const products = [
     price: 33000,
     category:"acusticas",
     stock: 7,
-    image: "https://northernlightsmusic.com/cdn/shop/products/DSC00236_1600x2400.jpg?v=1640191711"
-},
+    image: 'https://www.mrcdinstrumentos.com.mx/shared/productos/14584/214CEKDLX-01.jpg'},
 
 {
     id: 7,
@@ -76,8 +74,7 @@ export const products = [
     price: 3500,
     category:"acusticas",
     stock: 7,
-    image: "https://therocklab.mx/cdn/shop/products/0971170106_fen_ins_frt_1_rr_1024x1024.png?v=1613090011"
-
+    image: 'https://www.jpmusical.com/cdn/shop/products/Fender_FA-15_3-4Scale_WalnutFingerboard-Blue_Front_400x.png?v=1658184284'
 }
 ]
 
