@@ -47,6 +47,10 @@ export const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" to="/About">About us</Link>
         </li>
+
+        <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" to="/dashboard">Dash</Link>
+        </li>
       </ul>
       
     </div>

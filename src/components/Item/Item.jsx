@@ -7,6 +7,8 @@ import Card from "react-bootstrap/Card";
 import {Link} from "react-router-dom";
 
 export const Item = ({id, name, image }) => {
+
+
   const handleOnClick = () => {
     console.log("click");
   };
