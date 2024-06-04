@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
-export const ItemCount = ({stock}) => {
+export const ItemCount = ({stock, initial, handlleAddToCart}) => {
 
-    
+    const navigate = useNavigate();
     const [cantItems, setCantItems] = useState(0)
     /* const [estadoPrueba, setestadoPrueba] = useState(0)  */
 
@@ -19,7 +20,9 @@ export const ItemCount = ({stock}) => {
     podemos ponerle el numero de las veces que queremos que se repita dentro */
     
 /*     console.log('se estan declarando las funciones');
- */    const handlleAdd = () => {
+ */   
+        const[productAdded, setProductAdded] = useState(false);
+        const handlleAdd = () => {
         setCantItems(cantItems + 1)
     }
     const handlleSubs = () => {
@@ -28,21 +31,35 @@ export const ItemCount = ({stock}) => {
         }
     }
 
-const handlleAddToCart = () => {
-  console.log(`Se agregaron ${cantItems} elementos al carrito`);
-}
+    const handleTerminarCompra = () => {
+      setProductAdded(false)
+      navigate("/cart");
+    }
 
+    const handleAgregarAlCarrito = () => {
+      setProductAdded(true);
+      handlleAddToCart(cantItems  )
+    }
 
   return (
     
-    <>
+    <> 
     <div>ItemCount</div>
     <div>
     <button onClick={handlleSubs}> - </button>
     <span>{cantItems}</span>
     <button onClick={handlleAdd}> + </button>
     </div>
-    <button onClick={handlleAddToCart}>Agregar al carrito</button>
+
+    {productAdded ? (
+      <button onClick={handleTerminarCompra}> Terminar compra </button>
+   
+    ) : (
+      <button onClick={handleAgregarAlCarrito}> Agregar al carrito </button>
+      )
+
+    }
     </>
   )
 }
+

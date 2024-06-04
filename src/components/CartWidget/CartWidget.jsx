@@ -1,4 +1,4 @@
-import { useCartContext } from "../Context/CartContext";
+import { useCartContext } from "../../Context/CartContext";
 
 export const CartWidget = () => {
 const { totalQty } = useCartContext();

@@ -1,7 +1,7 @@
 /* import styles from "./App.module.css" */  /* al momento de agregar nuestro archivo css debemos de importarlo de esta forma en la parte superior que querramos que sea afectada por este archivo css */
 import { BrowserRouter, Routes, Route } from "react-router-dom" //Estos son los 3 componentes principales que usaremos de esta libreria
-import {Navbar} from "./components/Layout/Navbar/Navbar.jsx"
-import { Footer } from "./components/Layout/Footer/Footer.jsx"
+/* import {Navbar} from "./components/Layout/Navbar/Navbar.jsx"
+import { Footer } from "./components/Layout/Footer/Footer.jsx" */
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer.jsx"
 import { Cart } from "./components/Cart/Cart.jsx"
 import { Error } from "./components/Error/Error.jsx"
@@ -11,7 +11,7 @@ import { Layout } from "./components/Layout/Layout.jsx"
 import { Dashboard } from "./components/Dashboard/Dashboard.jsx"
 import { useEffect } from "react"
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute.jsx"
-import CartContextProvider from "./components/Context/CartContext.jsx"
+import CartContextProvider from "./Context/CartContext.jsx"
 
 
 const App = () => {
