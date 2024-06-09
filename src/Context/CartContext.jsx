@@ -26,6 +26,7 @@ useEffect (() => {
 },[])
 
 const addToCart = (item, qty)=>{
+    console.log(item);
     setTotalQty(totalQty + qty)
     setTotalPrice(totalPrice + item.price * qty)
 

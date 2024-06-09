@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { getProducts, getProductsByCategory } from '../../utils/MockData'
 import { ItemList } from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { db } from '../../firebase/dbConnection'
+import { collection, getDoc, getDocs, query, where } from 'firebase/firestore'
 /* import { useFetch } from '../../hooks/useFetch'
  */
 
@@ -18,19 +20,50 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
  
 /*    const url = "https://fakestoreapi.com/products";
    const method = "GET"; */
-/*    const { data, loading, error } = useFetch(url, method, null); */
+/*    const { data, loading, error } = useFetch( url, method, null); */
 
    //Con esto cargamos nuestros productos y no los de la API, comprobar con el archivo de REACT3
  useEffect(()=>{
   setLoading(true)
 
+  const productsCollection = collection(db, "products")
+
   if(catId){
-    getProductsByCategory(catId).then((res) => {
+    const cons = query(
+      productsCollection,
+      where("category", "array-contains", catId)
+      );
+
+      getDocs(cons) 
+        .then(({docs}) => {
+        const prodFromDocs = docs.map((doc) => ({
+          id: doc.id, 
+          ...doc.data()
+        }))
+        setProducts(prodFromDocs)     
+        setLoading(false);
+
+    }).catch((error) => {
+      console.log(error);
+    });
+   /*  getProductsByCategory(catId).then((res) => {
       setProducts(res);
       setLoading(false);
-    });
+    }); */
   }else{
-    getProducts()
+    getDocs(productsCollection)
+      .then(({docs}) => {
+        const prodFromDocs = docs.map((doc) => ({
+          id: doc.id, 
+          ...doc.data()
+        }))
+        setProducts(prodFromDocs)     
+        setLoading(false);
+
+    }).catch((error) => {
+      console.log(error);
+    });
+   /*  getProducts()
 .then((res)=>{
  setProducts(res);
   setLoading(false);
@@ -39,7 +72,7 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
   .catch((error) => {
     console.log(error);
   });
-  }
+  } */
 
 
   /* if (catId){
@@ -47,6 +80,7 @@ export const ItemListContainer = ({greeting } ) => {//En esta parte tambien dese
     setProducts(filterdProducts)
   } */
   //setProduct().then((res) => console.log(res));
+}
 }, [catId]);
    /*  const { bgBlue, greeting } = props */   //esto e sdescomposicion para hacer mas sencillo de leer los props en el elemento
     //De igual forma podemos declararlos en los parentesis de arribas

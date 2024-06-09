@@ -3,6 +3,8 @@ import { Layout } from "../../components/Layout/Layout" */
 /*  import { useEffect } from "react"; 
  import { useCartContext } from "../../Context/CartContext";
   */
+ import { importProductsFromMock } from "../../utils/importProducts"
+
 export const Home = () => {
 /*   const { comision, setTotalQty } = useCartContext();
 
@@ -11,8 +13,12 @@ export const Home = () => {
     console.log(comision);
   },[]) */
 
-  return <div> Home page    </div>
-  
+  return (
+  <>
+  <div> Home page    </div>
+  <button onClick={importProductsFromMock}>Agregar productos desde mock</button>
+  </>
+  )
 }
 
  /*  const { comision, setTotalQty } = useCartContext(); */
